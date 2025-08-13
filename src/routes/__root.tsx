@@ -5,9 +5,12 @@ import { TanstackDevtools } from '@tanstack/react-devtools'
 import Header from '../components/Header'
 
 export const Route = createRootRoute({
+  beforeLoad: () => {
+    document.title = 'Bauer'
+  },
   component: () => (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
       <TanstackDevtools
         config={{

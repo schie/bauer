@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CountDownRouteImport } from './routes/count-down'
 import { Route as ClockRouteImport } from './routes/clock'
 import { Route as IndexRouteImport } from './routes/index'
 
+const CountDownRoute = CountDownRouteImport.update({
+  id: '/count-down',
+  path: '/count-down',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClockRoute = ClockRouteImport.update({
   id: '/clock',
   path: '/clock',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/count-down': typeof CountDownRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/count-down': typeof CountDownRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/clock': typeof ClockRoute
+  '/count-down': typeof CountDownRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/clock'
+  fullPaths: '/' | '/clock' | '/count-down'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/clock'
-  id: '__root__' | '/' | '/clock'
+  to: '/' | '/clock' | '/count-down'
+  id: '__root__' | '/' | '/clock' | '/count-down'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClockRoute: typeof ClockRoute
+  CountDownRoute: typeof CountDownRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/count-down': {
+      id: '/count-down'
+      path: '/count-down'
+      fullPath: '/count-down'
+      preLoaderRoute: typeof CountDownRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/clock': {
       id: '/clock'
       path: '/clock'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClockRoute: ClockRoute,
+  CountDownRoute: CountDownRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
