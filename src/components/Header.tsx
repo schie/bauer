@@ -2,12 +2,23 @@ import { Link } from '@tanstack/react-router'
 
 export default function Header() {
   return (
-    <header className="p-2 flex gap-2 bg-white text-black justify-between">
-      <nav className="flex flex-row">
-        <div className="px-2 font-bold">
-          <Link to="/">Home</Link>
+    <header className="bg-base-100 shadow">
+      <div className="navbar px-4">
+        <div className="flex-1">
+          <Link to="/" className="btn btn-ghost text-xl">
+            Home
+          </Link>
         </div>
-      </nav>
+        <div className="flex-none">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <Link to="/clock" className="font-bold">
+                Clock
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
   )
 }

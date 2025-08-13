@@ -1,0 +1,89 @@
+.seven-seg-display {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--ssd-background, #000);
+  color: var(--ssd-color, #ff0000);
+}
+
+.ssd-digit {
+  position: relative;
+  width: 24px;
+  height: 40px;
+}
+
+.ssd-segment {
+  position: absolute;
+  background-color: #330000;
+}
+
+.ssd-segment.on {
+  background-color: currentColor;
+}
+
+.ssd-segment.off {
+  background-color: #330000;
+}
+
+.ssd-segment.a {
+  top: 0;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+}
+
+.ssd-segment.b {
+  top: 4px;
+  right: 0;
+  width: 4px;
+  height: 14px;
+}
+
+.ssd-segment.c {
+  bottom: 4px;
+  right: 0;
+  width: 4px;
+  height: 14px;
+}
+
+.ssd-segment.d {
+  bottom: 0;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+}
+
+.ssd-segment.e {
+  bottom: 4px;
+  left: 0;
+  width: 4px;
+  height: 14px;
+}
+
+.ssd-segment.f {
+  top: 4px;
+  left: 0;
+  width: 4px;
+  height: 14px;
+}
+
+.ssd-segment.g {
+  top: 18px;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+}
+
+.ssd-colon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 2px;
+}
+
+.ssd-colon .dot {
+  width: 4px;
+  height: 4px;
+  background-color: currentColor;
+}
